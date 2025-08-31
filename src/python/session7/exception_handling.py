@@ -1,4 +1,8 @@
 # Built-in Exception
+
+# print(10 / 0)
+
+
 try:
     print(10 / 0)
 except Exception as e:
@@ -21,7 +25,7 @@ except → handles error
 else → runs if no error
 finally → always runs"""
 
-
+#
 # We can create our own exception by creating a sub class to built-in Exception class.
 class AgeTooSmallError(Exception):
     """Raised when the age is below 18"""

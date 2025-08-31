@@ -1,0 +1,4 @@
+2025-08-30 11:19:43,268 - INFO - Reading from input.txt
+2025-08-30 11:19:43,279 - INFO - File read successfully
+2025-08-30 11:19:43,279 - INFO - Transformation complete
+2025-08-30 11:19:43,279 - INFO - Data written to output.txt

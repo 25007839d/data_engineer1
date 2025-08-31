@@ -42,6 +42,14 @@ WARNING -Something unexpected but not breaking
 ERROR   -A serious problem occurred
 CRITICAL-Very serious error, program may not continue
 
+
+# OPPS
+
+1. Abstractions
+2. Encapsulations
+3. Inheritance
+4. Polymorphism 
+ 
 # What is Polymorphism?
 
 Polymorphism = “one name, many forms”.
@@ -81,6 +89,12 @@ It is used to handle command-line arguments for Python scripts
 (like python script.py --name John --age 25)
 How to Run in terminal/command prompt:
 
-`python example.py --name Alice --age 30`
+[//]: # (Open CMD )
+# python argument_parser.py --name Alice --age 30
 
 
+1. *args → Non-keyworded (Positional arguments
+Collects extra positional arguments into a tuple.
+
+2. **kwargs → Keyworded arguments
+Collects extra keyword arguments into a dictionary.

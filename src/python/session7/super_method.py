@@ -1,3 +1,5 @@
+from polymorphism import Dog
+
 class A:
     def display(self):
         print("Class A")
@@ -12,7 +14,8 @@ class C(B):
         print("Class C")
         super().display()
 
-c = C()
-c.display()
+# c = C()
+# c.display()
 
-
+d = Dog()
+print(d.move())

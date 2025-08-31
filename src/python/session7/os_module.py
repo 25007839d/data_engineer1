@@ -7,21 +7,21 @@ print("Current Directory:", os.getcwd())
 print("Files & Folders:", os.listdir())
 
 # Create a new directory
-os.mkdir("test_folder")
-print("Created folder: test_folder")
+# os.mkdir("test_folder")
+# print("Created folder: test_folder")
 
 # Rename a directory
-os.rename("test_folder", "renamed_folder")
-print("Renamed folder")
-
-# Remove a directory
-os.rmdir("renamed_folder")
-print("Removed folder")
-
-# Check if a file/folder exists
-print("Does file exist?", os.path.exists("data.csv"))
-
-# Join paths (safe for Windows/Linux)
-path = os.path.join(os.getcwd(), "example.txt")
-print("Full path:", path)
+# os.rename("test_folder", "renamed_folder")
+# print("Renamed folder")
+#
+# # Remove a directory
+# os.rmdir("renamed_folder")
+# print("Removed folder")
+#
+# # Check if a file/folder exists
+# print("Does file exist?", os.path.exists("input.txt"))
+#
+# # Join paths (safe for Windows/Linux)
+# path = os.path.join(os.getcwd(), "input.txt")
+# print("Full path:", path)
 
