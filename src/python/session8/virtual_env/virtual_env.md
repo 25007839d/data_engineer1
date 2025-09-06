@@ -5,10 +5,10 @@ so libraries from one project don’t conflict with another.
 
 
 [//]: # (How to create vir env)
-`python -m venv vde1`
+`python -m venv venv`
 
 [//]: # (how to activate vir env)
-`.\vde1\Scripts\activate`
+`.\venv\Scripts\activate`
 
 [//]: # (how to deactivate vir env)
 `deactivate`
