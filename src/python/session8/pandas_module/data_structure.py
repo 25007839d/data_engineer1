@@ -5,8 +5,15 @@ import pandas as pd
 
 #Works with Series (1D) and DataFrame (2D)
 
- #Series (1D)
+ #Series (1D) created a Pandas Series with custom indexes.
 s = pd.Series([10, 20, 30], index=["a", "b", "c"])
+print(s["a"])
+
+# default index
+
+import pandas as pd
+
+s = pd.Series([10, 20, 30])
 print(s)
 
 # DataFrame (2D)
