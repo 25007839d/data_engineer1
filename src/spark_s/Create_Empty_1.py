@@ -5,9 +5,7 @@ from pyspark.sql import SparkSession
 
 spark = (
     SparkSession.builder
-    .appName("SparkByExamples.com")
-    .config("spark.driver.extraJavaOptions", "--enable-native-access=ALL-UNNAMED")
-    .config("spark.executor.extraJavaOptions", "--enable-native-access=ALL-UNNAMED")
+    .appName("de")
     .getOrCreate()
 )
 
@@ -17,3 +15,6 @@ emptyRDD = spark.sparkContext.emptyRDD()
 print(emptyRDD)
 
 # Alternatively you can also get empty RDD by using spark.sparkContext.parallelize([]).
+#Creates Empty RDD using parallelize
+rdd2= spark.sparkContext.parallelize([])
+print(rdd2)
