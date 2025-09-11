@@ -6,6 +6,7 @@ from pandas import read_csv, read_excel
 
 # Reading & Writing Data
 df = read_csv("data/department.csv")        # Read CSV
+# print(df.head())
 df.to_csv("data/output.csv", index=False)  # Save CSV
 
 # df = read_excel("data/123.xlsx")     # Read Excel

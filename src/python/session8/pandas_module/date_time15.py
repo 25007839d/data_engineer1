@@ -35,6 +35,11 @@ print(df["timestamp"].dt.date)    # just date part
 print('# just time part')
 print(df["timestamp"].dt.time)    # just time part
 
+print('# just hour part')
+print(df["timestamp"].dt.hour)
+print(df["timestamp"].dt.minute)
+print(df["timestamp"].dt.second)
+
 # filter by time
 print('filter by time')
 print(df[df["timestamp"] > "2025-02-01"])
