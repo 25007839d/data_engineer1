@@ -1,4 +1,4 @@
-from src.spark_s.structtype_StructField_5 import spark
+from src.spark_s.dataframe_rdd.structtype_StructField_5 import spark
 
 data=[("James",23),("Ann",40)]
 
