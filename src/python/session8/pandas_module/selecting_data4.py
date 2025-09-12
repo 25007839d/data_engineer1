@@ -7,8 +7,8 @@ from reading_writing2 import df
 # print(df[["name","salary"]])
 
 # ✅ By row
-print(df.loc[0])        # by index label
-print(df.iloc[0])       # by position
+# print(df.loc[0])        # by index label
+# print(df.iloc[0])       # by position
 # .loc[] → label-based, end inclusive.
 # .iloc[] → position-based, end exclusive.
 # ✅ Conditional selection
