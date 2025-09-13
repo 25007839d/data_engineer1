@@ -1,0 +1,6 @@
+id,name,type,city,salary,dept
+1,Alice,Cash,Bangalore,50000,HR
+2,Bob,UPI,Delhi,60000,Finance
+3,Charlie,,Bangalore,55000,IT
+4,David,Cash,Mumbai,70000,Sales
+5,Eva,UPI,Delhi,65000,Marketing
