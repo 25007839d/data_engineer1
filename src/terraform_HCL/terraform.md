@@ -42,3 +42,15 @@ output block in demo.tf is used to display values back to the user after running
 We can pass list of string or numbers and collect as per requirement with index position
 
 # 3 Function use in terraform
+
+Most commonly used Terraform functions (like concat, length, contains, lookup)
+Dynamic Lookup Function use in terraform
+
+# 4 How to read variable from environment
+
+We can pass variables from the environment using the prefix TF_VAR_.
+## Linux / Mac
+export TF_VAR_username=Dushyant
+
+## Windows PowerShell
+$env:TF_VAR_username="Dushyant"
