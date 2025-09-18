@@ -12,6 +12,7 @@ CREATE TABLE students (
     city   VARCHAR2(50)
 );
 
+
 -- Insert sample data
 INSERT INTO students VALUES (1, 'Alice', 22, 85, 'Delhi');
 INSERT INTO students VALUES (2, 'Bob', 24, 70, 'Mumbai');

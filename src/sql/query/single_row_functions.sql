@@ -1,10 +1,16 @@
--- Functions can be categorized as follows
---❑ Single row functions
---❑ Group functions
+------------------------------------------------------------
+-- FUNCTIONS IN SQL
+-- Categories:
+-- ? Single Row Functions (operate per row)
+--    - Numeric, String, Date, Miscellaneous, Conversion
+-- ? Group Functions (operate on sets of rows)
+------------------------------------------------------------
 
 ------------------------------------------------------------
 -- SAMPLE TABLE
 ------------------------------------------------------------
+drop table employees;
+
 CREATE TABLE employees (
     emp_id NUMBER PRIMARY KEY,
     first_name VARCHAR2(50),
@@ -21,44 +27,81 @@ INSERT INTO employees VALUES (4, 'Mark', 'Brown', 70000, TO_DATE('2018-05-05','Y
 INSERT INTO employees VALUES (5, 'John', 'Doe', NULL, TO_DATE('2022-11-20','YYYY-MM-DD'),NULL);
 COMMIT;
 
+select * from employees
 ------------------------------------------------------------
--- 1️⃣ NUMERIC FUNCTIONS
+-- NUMERIC FUNCTIONS
 ------------------------------------------------------------
--- ABS: Absolute value
+-- ABS: Absolute value (removes sign)
 SELECT salary, ABS(salary - 60000) AS salary_diff FROM employees;
 
--- CEIL: Next highest integer
+-- CEIL: Smallest integer >= value
 SELECT salary, CEIL(salary/10000) AS ceil_value FROM employees;
 
--- FLOOR: Next lowest integer
+SELECT CEIL(25.75) AS result1,   -- 25
+       CEIL(25.20) AS result2,   -- 25
+       CEIL(-25.20) AS result3   -- -26
+       from dual
+
+-- FLOOR: Largest integer <= value
 SELECT salary, FLOOR(salary/10000) AS floor_value FROM employees;
 
--- ROUND: Round to nearest integer/decimal
+-- Simple values
+SELECT FLOOR(25.75) AS result1,   -- 25
+       FLOOR(25.20) AS result2,   -- 25
+       FLOOR(-25.20) AS result3   -- -26 (rounds down towards negative infinity)
+FROM dual;
+
+-- On employees salary (in 1000s)
+SELECT first_name, salary,salary/73,
+       FLOOR(salary/73) AS salary_in_thousands
+FROM employees;
+
+
+-- ROUND: Round number
 SELECT salary, ROUND(salary,-3) AS rounded_salary FROM employees;
 
--- TRUNC: Truncate to specific decimal
+SELECT ROUND(123.556) AS rounded0,       -- 123
+       ROUND(123.556,2) AS rounded2,     -- 123.56
+       ROUND(123.456,-1) AS rounded_tens -- 120
+FROM dual;
+
+
+-- TRUNC: Removes (truncates) digits after the decimal point without rounding.
 SELECT salary, TRUNC(salary,-3) AS truncated_salary FROM employees;
 
--- MOD: Remainder
+SELECT TRUNC(123.456) AS no_decimals,      -- 123
+       TRUNC(123.456,2) AS two_decimals,   -- 123.45
+       TRUNC(123.456,-1) AS tens_place     -- 120
+FROM dual;
+
+
+-- MOD: Remainder of division
 SELECT emp_id, MOD(salary, 20000) AS remainder FROM employees;
 
 -- POWER & SQRT
 SELECT salary, POWER(2,3) AS power_value, SQRT(16) AS sqrt_value FROM employees;
 
--- SIGN: -1,0,1 for negative/zero/positive
+SELECT POWER(2,3) AS power_value, SQRT(16) AS sqrt_value FROM dual;
+-- SIGN: Shows -1, 0, or 1
+--Returns the sign of a number:
+
+--if number is negative
+--if number is zero
+--if number is positive
+
 SELECT salary, SIGN(salary-50000) AS sign_test FROM employees;
 
 ------------------------------------------------------------
--- 2️⃣ STRING FUNCTIONS
+-- STRING FUNCTIONS
 ------------------------------------------------------------
 -- CONCAT / ||
 SELECT CONCAT(first_name, last_name) AS fullname FROM employees;
 SELECT first_name || ' ' || last_name AS fullname FROM employees;
 
--- SUBSTR
+-- SUBSTR: Extract substring
 SELECT first_name, SUBSTR(first_name,1,3) AS short_name FROM employees;
 
--- LENGTH
+-- LENGTH: Count characters
 SELECT last_name, LENGTH(last_name) AS name_length FROM employees;
 
 -- INSTR: Position of substring
@@ -67,7 +110,7 @@ SELECT first_name, INSTR(first_name,'u') AS pos FROM employees;
 -- UPPER / LOWER / INITCAP
 SELECT UPPER(first_name), LOWER(last_name), INITCAP(last_name) FROM employees;
 
--- LPAD / RPAD
+-- LPAD / RPAD: Padding
 SELECT LPAD(first_name,10,'*'), RPAD(last_name,10,'#') FROM employees;
 
 -- REPLACE
@@ -79,9 +122,9 @@ SELECT LTRIM('###Hello','#') AS ltrimmed FROM dual;
 SELECT RTRIM('Hello***','*') AS rtrimmed FROM dual;
 
 ------------------------------------------------------------
--- 3️⃣ DATE FUNCTIONS
+-- DATE FUNCTIONS
 ------------------------------------------------------------
--- SYSDATE
+-- SYSDATE: Current date
 SELECT SYSDATE AS today FROM dual;
 
 -- ADD_MONTHS
@@ -90,34 +133,54 @@ SELECT hire_date, ADD_MONTHS(hire_date, 6) AS after_6_months FROM employees;
 -- MONTHS_BETWEEN
 SELECT first_name, MONTHS_BETWEEN(SYSDATE, hire_date) AS months_worked FROM employees;
 
--- NEXT_DAY
+-- NEXT_DAY: Next Monday
 SELECT hire_date, NEXT_DAY(hire_date, 'MONDAY') FROM employees;
 
--- LAST_DAY
+-- LAST_DAY: End of month
 SELECT hire_date, LAST_DAY(hire_date) AS last_day FROM employees;
 
--- ROUND (on date)
+-- ROUND (on date): Nearest month
 SELECT hire_date, ROUND(hire_date,'MONTH') AS rounded_month FROM employees;
 
--- TRUNC (on date)
+-- TRUNC (on date): Truncate to year start
 SELECT hire_date, TRUNC(hire_date,'YEAR') AS trunc_year FROM employees;
 
+D → Day of week (1–7)
+DD → Day of month (1–31)
+DDD → Day of year (1–366)
+MM → Month number (1–12)
+MON → Threeletter month abbreviation (e.g., JAN)
+MONTH → Full month name (e.g., JANUARY)
+RM → Month in Roman numerals (I–XII)
+DY → Three-letter day abbreviation (e.g., MON)
+DAY → Full day name (e.g., MONDAY)
+Y → Last 1 digit of year (e.g., 2025 → 5)
+YY → Last 2 digits of year (e.g., 2025 → 25)
+YYYY → Full 4-digit year
+IW → Week of year (ISO standard)
+HH → Hour (1–12)
+HH24 → Hour (0–23)
+MI → Minutes
+
+SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY HH24:MI') AS formatted_date
+FROM dual;
+
 ------------------------------------------------------------
--- 4️⃣ MISCELLANEOUS FUNCTIONS
+-- MISCELLANEOUS FUNCTIONS
 ------------------------------------------------------------
--- NVL: Replace NULL
+-- NVL: Replace NULL with default
 SELECT salary, NVL(salary, 30000) AS new_salary FROM employees;
 
--- NVL2: If not NULL then expr2 else expr3
+-- NVL2: If not NULL ? expr2 else expr3
 SELECT NVL2(salary, 'Has Salary','No Salary') AS salary_status FROM employees;
 
--- NULLIF: Returns NULL if expr1=expr2 else expr1
+-- NULLIF: Return NULL if equal
 SELECT NULLIF(10,10) AS result1, NULLIF(10,20) AS result2 FROM dual;
 
 -- COALESCE: First non-null value
 SELECT COALESCE(NULL,NULL,salary,10000) AS final_value FROM employees;
 
--- DECODE: IF-THEN logic
+-- DECODE: Simple IF-THEN logic
 SELECT first_name,
        DECODE(department,'HR','Human Resource','IT','Technology','Finance','Accounts','Other') AS dept_full
 FROM employees;
@@ -131,8 +194,11 @@ SELECT first_name, salary,
        END AS salary_range
 FROM employees;
 
+-- GREATEST & LEAST
+SELECT GREATEST(100,200,300), LEAST(100,200,300) FROM dual;
+
 ------------------------------------------------------------
--- 5️⃣ CONVERSION FUNCTIONS
+-- CONVERSION FUNCTIONS
 ------------------------------------------------------------
 -- TO_CHAR (Number formatting)
 SELECT TO_CHAR(salary,'$99,999') AS formatted_salary FROM employees;
@@ -147,5 +213,20 @@ SELECT TO_DATE('15-SEP-2025','DD-MON-YYYY') AS converted_date FROM dual;
 SELECT TO_NUMBER('12345') + 55 AS total FROM dual;
 
 ------------------------------------------------------------
--- END
+-- GROUP FUNCTIONS
+------------------------------------------------------------
+-- COUNT
+SELECT COUNT(*) AS total_employees, COUNT(salary) AS with_salary FROM employees;
+
+-- SUM
+SELECT SUM(salary) AS total_salary FROM employees;
+
+-- AVG
+SELECT AVG(salary) AS avg_salary FROM employees;
+
+-- MAX / MIN
+SELECT MAX(salary) AS max_salary, MIN(salary) AS min_salary FROM employees;
+
+------------------------------------------------------------
+-- END OF SCRIPT
 ------------------------------------------------------------

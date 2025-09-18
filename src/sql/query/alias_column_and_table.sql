@@ -9,6 +9,7 @@ CREATE TABLE employees (
     department VARCHAR2(50)
 );
 
+drop table employees
 -- Insert sample data
 INSERT INTO employees VALUES (1, 'Ritu', 'Sharma', 50000, 'HR');
 INSERT INTO employees VALUES (2, 'Dushyant', 'Kumar', 60000, 'IT');
@@ -17,6 +18,7 @@ INSERT INTO employees VALUES (4, 'Mark', 'Brown', 70000, 'IT');
 INSERT INTO employees VALUES (5, 'John', 'Doe', 40000, 'HR');
 COMMIT;
 
+select * from employees
 --------------------------------------------------
 -- COLUMN ALIASES
 --------------------------------------------------
@@ -49,6 +51,8 @@ INSERT INTO departments VALUES ('HR', 'Delhi');
 INSERT INTO departments VALUES ('IT', 'Mumbai');
 INSERT INTO departments VALUES ('Finance', 'Pune');
 COMMIT;
+
+select * from departments
 
 -- Join employees (alias e) with departments (alias d)
 SELECT e.first_name || ' ' || e.last_name AS employee_name,
