@@ -91,12 +91,33 @@ SELECT POWER(2,3) AS power_value, SQRT(16) AS sqrt_value FROM dual;
 
 SELECT salary, SIGN(salary-50000) AS sign_test FROM employees;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ------------------------------------------------------------
 -- STRING FUNCTIONS
 ------------------------------------------------------------
+select * from employees;
+
 -- CONCAT / ||
-SELECT CONCAT(first_name, last_name) AS fullname FROM employees;
-SELECT first_name || ' ' || last_name AS fullname FROM employees;
+SELECT CONCAT(first_name , last_name) AS fullname FROM employees;
+select concat('a' , 'b') from dual;
+
+SELECT  '*****' || first_name || ' ' || last_name || '*****' AS fullname FROM employees;
 
 -- SUBSTR: Extract substring
 SELECT first_name, SUBSTR(first_name,1,3) AS short_name FROM employees;
@@ -105,7 +126,7 @@ SELECT first_name, SUBSTR(first_name,1,3) AS short_name FROM employees;
 SELECT last_name, LENGTH(last_name) AS name_length FROM employees;
 
 -- INSTR: Position of substring
-SELECT first_name, INSTR(first_name,'u') AS pos FROM employees;
+SELECT first_name, INSTR(first_name,'u',1,2) AS pos FROM employees;
 
 -- UPPER / LOWER / INITCAP
 SELECT UPPER(first_name), LOWER(last_name), INITCAP(last_name) FROM employees;
@@ -114,12 +135,31 @@ SELECT UPPER(first_name), LOWER(last_name), INITCAP(last_name) FROM employees;
 SELECT LPAD(first_name,10,'*'), RPAD(last_name,10,'#') FROM employees;
 
 -- REPLACE
-SELECT REPLACE(first_name,'u','oo') FROM employees;
+SELECT first_name, REPLACE(first_name,'u','oo') FROM employees;
 
 -- TRIM / LTRIM / RTRIM
 SELECT TRIM('   HR   ') AS trimmed FROM dual;
-SELECT LTRIM('###Hello','#') AS ltrimmed FROM dual;
+SELECT '###Hello', LTRIM('###Hello','#') AS ltrimmed FROM dual;
 SELECT RTRIM('Hello***','*') AS rtrimmed FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ------------------------------------------------------------
 -- DATE FUNCTIONS
@@ -127,6 +167,7 @@ SELECT RTRIM('Hello***','*') AS rtrimmed FROM dual;
 -- SYSDATE: Current date
 SELECT SYSDATE AS today FROM dual;
 
+select * from employees
 -- ADD_MONTHS
 SELECT hire_date, ADD_MONTHS(hire_date, 6) AS after_6_months FROM employees;
 
@@ -145,25 +186,30 @@ SELECT hire_date, ROUND(hire_date,'MONTH') AS rounded_month FROM employees;
 -- TRUNC (on date): Truncate to year start
 SELECT hire_date, TRUNC(hire_date,'YEAR') AS trunc_year FROM employees;
 
-D → Day of week (1–7)
-DD → Day of month (1–31)
-DDD → Day of year (1–366)
-MM → Month number (1–12)
-MON → Threeletter month abbreviation (e.g., JAN)
-MONTH → Full month name (e.g., JANUARY)
-RM → Month in Roman numerals (I–XII)
-DY → Three-letter day abbreviation (e.g., MON)
-DAY → Full day name (e.g., MONDAY)
-Y → Last 1 digit of year (e.g., 2025 → 5)
-YY → Last 2 digits of year (e.g., 2025 → 25)
-YYYY → Full 4-digit year
-IW → Week of year (ISO standard)
-HH → Hour (1–12)
-HH24 → Hour (0–23)
-MI → Minutes
-
 SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY HH24:MI') AS formatted_date
 FROM dual;
+
+------------------------------------------------------------
+-- CONVERSION FUNCTIONS
+------------------------------------------------------------
+-- TO_CHAR (Number formatting)
+SELECT salary, TO_CHAR(salary,'$99,999') AS formatted_salary FROM employees;
+
+-- TO_CHAR (Date formatting)
+SELECT hire_date, TO_CHAR(hire_date,'DD-MON-YYYY') AS hire_date_char FROM employees;
+
+-- TO_DATE (string to date)
+SELECT TO_DATE('15-SEP-2025','DD-MON-YYYY') AS converted_date FROM dual;
+
+-- TO_NUMBER (string to number)
+SELECT '10' + 55 AS total FROM dual;
+
+
+
+
+
+
+
 
 ------------------------------------------------------------
 -- MISCELLANEOUS FUNCTIONS
@@ -197,20 +243,6 @@ FROM employees;
 -- GREATEST & LEAST
 SELECT GREATEST(100,200,300), LEAST(100,200,300) FROM dual;
 
-------------------------------------------------------------
--- CONVERSION FUNCTIONS
-------------------------------------------------------------
--- TO_CHAR (Number formatting)
-SELECT TO_CHAR(salary,'$99,999') AS formatted_salary FROM employees;
-
--- TO_CHAR (Date formatting)
-SELECT TO_CHAR(hire_date,'DD-MON-YYYY') AS hire_date_char FROM employees;
-
--- TO_DATE (string to date)
-SELECT TO_DATE('15-SEP-2025','DD-MON-YYYY') AS converted_date FROM dual;
-
--- TO_NUMBER (string to number)
-SELECT TO_NUMBER('12345') + 55 AS total FROM dual;
 
 ------------------------------------------------------------
 -- GROUP FUNCTIONS
