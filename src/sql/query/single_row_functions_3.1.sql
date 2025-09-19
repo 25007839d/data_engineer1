@@ -211,6 +211,8 @@ SELECT '10' + 55 AS total FROM dual;
 
 
 
+
+
 ------------------------------------------------------------
 -- MISCELLANEOUS FUNCTIONS
 ------------------------------------------------------------
@@ -218,17 +220,29 @@ SELECT '10' + 55 AS total FROM dual;
 SELECT salary, NVL(salary, 30000) AS new_salary FROM employees;
 
 -- NVL2: If not NULL ? expr2 else expr3
-SELECT NVL2(salary, 'Has Salary','No Salary') AS salary_status FROM employees;
+SELECT salary , NVL2(salary, 'Has Salary','No Salary') AS salary_status FROM employees;
 
 -- NULLIF: Return NULL if equal
-SELECT NULLIF(10,10) AS result1, NULLIF(10,20) AS result2 FROM dual;
+SELECT NULLIF(10,10) AS result1, NULLIF(10,30) AS result2 FROM dual;
+
+SELECT NULLIF(salary,10) AS result1, NULLIF(salary,30) AS result2 FROM employees;
+
 
 -- COALESCE: First non-null value
-SELECT COALESCE(NULL,NULL,salary,10000) AS final_value FROM employees;
+SELECT salary, COALESCE(NULL,NULL,salary,10000) AS final_value FROM employees;
 
 -- DECODE: Simple IF-THEN logic
-SELECT first_name,
-       DECODE(department,'HR','Human Resource','IT','Technology','Finance','Accounts','Other') AS dept_full
+SELECT first_name,department,
+       DECODE(department,'HR','Human Resource','Finance','Accounts',department) AS dept_full
+FROM employees;
+
+
+SELECT first_name, department,
+       CASE
+         WHEN department = 'HR' THEN 'Human Resource'
+         WHEN department = 'Finance'  THEN 'Accounts'
+         ELSE department
+       END AS dept_full
 FROM employees;
 
 -- CASE: Conditional logic
@@ -244,21 +258,4 @@ FROM employees;
 SELECT GREATEST(100,200,300), LEAST(100,200,300) FROM dual;
 
 
-------------------------------------------------------------
--- GROUP FUNCTIONS
-------------------------------------------------------------
--- COUNT
-SELECT COUNT(*) AS total_employees, COUNT(salary) AS with_salary FROM employees;
-
--- SUM
-SELECT SUM(salary) AS total_salary FROM employees;
-
--- AVG
-SELECT AVG(salary) AS avg_salary FROM employees;
-
--- MAX / MIN
-SELECT MAX(salary) AS max_salary, MIN(salary) AS min_salary FROM employees;
-
-------------------------------------------------------------
--- END OF SCRIPT
-------------------------------------------------------------
+-------------------------------------
