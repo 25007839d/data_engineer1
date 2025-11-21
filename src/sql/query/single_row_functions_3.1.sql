@@ -162,6 +162,7 @@ SELECT RTRIM('Hello***','*') AS rtrimmed FROM dual;
 
 
 ------------------------------------------------------------
+
 -- DATE FUNCTIONS
 ------------------------------------------------------------
 -- SYSDATE: Current date
@@ -203,7 +204,6 @@ SELECT TO_DATE('15-SEP-2025','DD-MON-YYYY') AS converted_date FROM dual;
 
 -- TO_NUMBER (string to number)
 SELECT '10' + 55 AS total FROM dual;
-
 
 
 

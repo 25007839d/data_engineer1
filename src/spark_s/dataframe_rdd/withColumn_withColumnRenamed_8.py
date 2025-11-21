@@ -25,16 +25,16 @@ spark = SparkSession.builder.appName("SchemaExample").getOrCreate()
 
 df = spark.createDataFrame(data=data, schema = schema)
 df.printSchema()
-df.show(truncate=False)
+df.show()
 
 df2 = df.withColumn("salary",col("salary").cast("Integer"))
 df2.printSchema()
-df2.show(truncate=False)
+df2.show()
 
 
 df3 = df.withColumn("salary_new",col("salary")*100)
 df3.printSchema()
-df3.show(truncate=False)
+df3.show()
 
 
 df4 = df.withColumn("CopiedColumn", col("salary") * -1)
@@ -43,14 +43,14 @@ df4.printSchema()
 df5 = df.withColumn("Country", lit("USA")) #lit() → stands for literal, used to add constants into a column expression.
 df5.printSchema()
 
-df6 = df.withColumn("Country", lit("USA")).withColumn("anotherColumn", lit("anotherValue"))
+df6 = df.withColumn("Country", lit("USA")).withColumn("anotherColumn", lit("anotherValue")).withColumn("state",lit("xyz"))
 df6.printSchema()
 
 #withColumnRenamed
 
-df.withColumnRenamed("gender", "sex").show(truncate=False)
+df.withColumnRenamed("gender", "sex").show()
 
-df4.drop("CopiedColumn").show(truncate=False)
+df4.drop("CopiedColumn").show()
 
 
 

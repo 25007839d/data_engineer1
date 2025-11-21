@@ -1,0 +1,134 @@
+Python From Zero to Production — Step-by-Step Playlist
+🎯 Playlist Description
+
+A complete Python learning path: basics → core language features → real-world tooling → web and APIs → data & ML → production & deployment. Each video is focused, practical and project-oriented — perfect for beginners and early-career developers.
+
+Beginner (Fundamentals)
+
+Intro: Why Learn Python & How This Playlist Works
+
+Install Python + Setup VS Code / PyCharm + Virtualenv
+
+Python Basics — Syntax, Variables, Data Types
+
+Control Flow — if, for, while, comprehensions
+
+Functions & Modules
+
+Core Python (Language features)
+
+Built-in Data Structures Deep Dive
+
+File I/O, CSV & JSON Handling
+
+Error Handling & Exceptions
+
+Iterators & Generators
+
+Decorators & Context Managers
+
+Object-Oriented Python
+
+Type Hints & Static Checking (mypy)
+
+Practical Tooling & Testing
+
+Virtual Environments, pip, Poetry intro
+
+Unit Testing with pytest
+
+Logging & Debugging (pdb / VS Code debugger)
+
+Packaging Python Libraries & Publishing to PyPI
+
+CLI Apps with argparse & click
+
+Concurrency & Performance
+
+Threading vs Multiprocessing
+
+Asyncio — Async/Await in Python
+
+Profiling & Performance Optimization
+
+Web Development & APIs
+
+Web APIs 101 — HTTP, REST & JSON
+
+Build a REST API with Flask (CRUD)
+
+Build a REST API with FastAPI (async + modern)
+
+Authentication & Authorization (JWT, OAuth basics)
+
+Deploy a Python Web App (Gunicorn + Nginx + Docker)
+
+Databases & Persistence
+
+Relational DBs — SQLite & SQLAlchemy ORM
+
+NoSQL with Redis & Basic Caching Patterns
+
+PostgreSQL in Production (connection pooling)
+
+Data Engineering & Machine Learning
+
+NumPy & Pandas Crash Course
+
+Data Visualization with Matplotlib / Seaborn
+
+Intro to scikit-learn — Build a Simple Model
+
+Jupyter Notebooks & Reproducible Workflows
+
+Deploy ML Model as API (FastAPI + Pickle/Joblib)
+
+Automation & Scripting
+
+Web Scraping with Requests + BeautifulSoup
+
+Automating Workflows — cron jobs & Airflow intro
+
+Selenium Automation & Browser Testing
+
+Advanced & Architecture
+
+Design Patterns in Python (Factory, Singleton, etc.)
+
+Microservices & Messaging (Pub/Sub, RabbitMQ)
+
+CI/CD for Python with GitHub Actions
+
+Security Best Practices for Python Apps
+
+Project Builds (Capstones)
+
+Project 1 — To-Do App (Flask + SQLite + Docker)
+
+Project 2 — ETL Pipeline: CSV → Pandas → DB
+
+Project 3 — REST API + Auth + CI/CD + Deploy (FastAPI)
+
+Project 4 — Web Scraper → Data Pipeline → Dashboard
+
+Project 5 — ML End-to-End: Train → Evaluate → Serve
+
+Interview & Career Boosters
+
+Common Python Interview Questions & Live Coding
+
+Data Structures & Algorithms in Python — Key Patterns
+
+10 Mini Exercises (Live Solve)
+
+System Design for Python Apps — Scaling tips
+
+Showcase Python Projects on GitHub + Resume Tips
+
+⏱ Video Length & Cadence
+
+Tutorials: 8–18 minutes
+
+Projects: 20–40 minutes (may split into parts)
+
+Release: 1–2 videos per week

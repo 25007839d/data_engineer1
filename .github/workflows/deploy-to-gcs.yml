@@ -1,0 +1,46 @@
+name: Deploy DAGs and PySpark app to GCS
+
+on:
+  push:
+    branches:
+      - main    # triggers on push to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      GCP_PROJECT_ID: euphoric-axiom-475504-f3
+
+      # Target GCS locations (folder-level)
+      COMPOSER_DAGS_BUCKET: gs://us-central1-dev-composer-de-2d5b7553-bucket/dags
+      JARS_BUCKET: gs://socourse_de_1/jars
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Set up gcloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
+
+      - name: Show gcloud version (optional)
+        run: gcloud version
+
+      # 1) Deploy DAGs from src/gcp_dataproc/airflow_dag/dags
+      - name: Sync DAGs to Composer bucket
+        run: |
+          echo "Syncing ./src/gcp_dataproc/airflow_dag/dags -> $COMPOSER_DAGS_BUCKET"
+          gsutil -m rsync -r ./src/gcp_dataproc/airflow_dag/dags "$COMPOSER_DAGS_BUCKET"
+
+      # 2) Deploy PySpark app from src/jars
+      - name: Sync jars to PySpark jars bucket
+        run: |
+          echo "Syncing ./src/jars -> $JARS_BUCKET"
+          gsutil -m rsync -r ./src/jars "$JARS_BUCKET"

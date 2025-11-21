@@ -6,7 +6,7 @@ from pyspark.sql import SparkSession
 
 spark = (
     SparkSession.builder
-    .appName("SparkByExamples.com")
+    .appName("xyz.com")
     .config("spark.driver.extraJavaOptions", "--enable-native-access=ALL-UNNAMED")
     .config("spark.executor.extraJavaOptions", "--enable-native-access=ALL-UNNAMED")
     .getOrCreate()

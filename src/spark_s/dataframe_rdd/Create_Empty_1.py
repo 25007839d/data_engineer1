@@ -3,6 +3,7 @@ import  pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql import SparkSession
 
+import pandas as pd
 spark = (
     SparkSession.builder
     .appName("de")
@@ -16,5 +17,5 @@ print(emptyRDD)
 
 # Alternatively you can also get empty RDD by using spark.sparkContext.parallelize([]).
 #Creates Empty RDD using parallelize
-rdd2= spark.sparkContext.parallelize([])
-print(rdd2)
+rdd2= spark.sparkContext.parallelize([1,3,4,5])
+print(rdd2.collect())
