@@ -42,6 +42,6 @@ jobs:
       # 2) Deploy PySpark app from src/jars
       - name: Sync jars to PySpark jars bucket
         run: |
-          echo "Syncing ./src/jars -> $JARS_BUCKET"
-          gsutil -m rsync -r ./src/jars "$JARS_BUCKET"
+          echo "Syncing ./src/gcp_dataproc/jars -> $JARS_BUCKET"
+          gsutil -m rsync -r ./src/gcp_dataproc/jars "$JARS_BUCKET"
 
