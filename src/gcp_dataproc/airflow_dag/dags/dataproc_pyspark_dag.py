@@ -84,6 +84,7 @@ with DAG('dataproc_pyspark_pipeline', default_args=default_args, schedule_interv
         job=pyspark_job,
     )
 
+
     delete_cluster = DataprocDeleteClusterOperator(
         task_id='delete_cluster',
         project_id=PROJECT_ID,
