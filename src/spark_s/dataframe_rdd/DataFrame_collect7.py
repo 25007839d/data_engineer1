@@ -17,3 +17,14 @@ df.show(2,truncate=False)
 
 dataCollect = df.collect()
 print(dataCollect)
+
+# from pyspark.sql import SparkSession
+#
+# spark = SparkSession.builder \
+#     .appName("CreateDF") \
+#     .config("spark.driver.extraJavaOptions", "--add-exports java.base/sun.nio.ch=ALL-UNNAMED") \
+#     .config("spark.executor.extraJavaOptions", "--add-exports java.base/sun.nio.ch=ALL-UNNAMED") \
+#     .getOrCreate()
+#
+# df = spark.createDataFrame([(1, "A"), (2, "B")], ["id", "name"])
+# df.show()

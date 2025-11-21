@@ -32,9 +32,10 @@ df.show(truncate=False)
 df.printSchema()
 
 
-df.filter(df.name.lastname == "Williams").show(truncate=False)
+df.filter(df.name.lastname == "Williams").show()
 df.filter(df.state.startswith("N")).show()
-df.filter(df.state.endswith("H")).show()
+df.filter(df.state.endswith("H"))\
+    .show()
 
 #contains
 df.filter(df.state.contains("H")).show()

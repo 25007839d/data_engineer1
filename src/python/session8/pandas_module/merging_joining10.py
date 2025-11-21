@@ -18,7 +18,7 @@ df2 = pd.DataFrame({
 print("Table 1:\n", df1)
 print("\nTable 2:\n", df2)
 
-# merge() → SQL-style joins
+# merge() → SQL-style sql_joins_3.4.sql
 # Works like SQL JOIN (INNER, LEFT, RIGHT, OUTER)
 # You specify keys/columns to join on
 

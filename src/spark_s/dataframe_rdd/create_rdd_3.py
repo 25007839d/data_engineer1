@@ -10,7 +10,7 @@ print(rdd.collect())
 # Convert PySpark RDD to DataFrame Using rdd.toDF() function
 df = rdd.toDF()
 df.printSchema()
-df.show(truncate=False) # using truncate=False, Does not truncate column values → prints full content, no matter how long.
+df.show() # using truncate=False, Does not truncate column values → prints full content, no matter how long.
 
 # By default, toDF() function creates column names as “_1” and “_2”
 
@@ -18,7 +18,7 @@ df.show(truncate=False) # using truncate=False, Does not truncate column values 
 deptColumns = ['dept','dept_id']
 df2 = rdd.toDF(deptColumns)
 df2.printSchema()
-df2.show(truncate=False)
+df2.show()
 
 #Using PySpark createDataFrame() function
 
@@ -27,7 +27,7 @@ df2.show(truncate=False)
 
 deptDF = spark.createDataFrame(rdd, schema = deptColumns)
 deptDF.printSchema()
-deptDF.show(truncate=False)
+deptDF.show()
 
 #Using createDataFrame() with StructType schema
 
