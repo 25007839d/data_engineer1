@@ -131,34 +131,34 @@ def main():
     # ----------------------------------------------------------------
     # Write to BigQuery
     # ----------------------------------------------------------------
-    logger.info(
-        "Writing final dataframe to BigQuery table %s using temp bucket %s",
-        args.bq_output_table,
-        args.temp_gcs
-    )
-    logger.info("Employees count: %d", employees.count())
-    logger.info("Departments count: %d", departments.count())
-    logger.info("Joined count: %d", joined.count())
-
-    # Write to BigQuery with extra options
-    # ----------------------------------------------------------------
-    try:
-        (final.write
-         .format("bigquery")  # or "com.google.cloud.spark.bigquery" depending on your env
-         .option("table", args.bq_output_table)  # e.g. "myproj.mydataset.mytable"
-         .option("temporaryGcsBucket", args.temp_gcs)  # e.g. "my-bucket-tmp"
-         # You can uncomment if needed:
-         # .option("writeMethod", "direct")
-         # .option("partitionField", "department_name")  # if you want partitioning
-         .mode("append")
-         .save()
-         )
-        logger.info("Write to BigQuery completed without exception.")
-    except Exception as e:
-        logger.error("Error while writing to BigQuery: %s", e)
-        raise
-    logger.info("Write to BigQuery completed")
-    spark.stop()
+    # logger.info(
+    #     "Writing final dataframe to BigQuery table %s using temp bucket %s",
+    #     args.bq_output_table,
+    #     args.temp_gcs
+    # )
+    # logger.info("Employees count: %d", employees.count())
+    # logger.info("Departments count: %d", departments.count())
+    # logger.info("Joined count: %d", joined.count())
+    #
+    # # Write to BigQuery with extra options
+    # # ----------------------------------------------------------------
+    # try:
+    #     (final.write
+    #      .format("bigquery")  # or "com.google.cloud.spark.bigquery" depending on your env
+    #      .option("table", args.bq_output_table)  # e.g. "myproj.mydataset.mytable"
+    #      .option("temporaryGcsBucket", args.temp_gcs)  # e.g. "my-bucket-tmp"
+    #      # You can uncomment if needed:
+    #      # .option("writeMethod", "direct")
+    #      # .option("partitionField", "department_name")  # if you want partitioning
+    #      .mode("append")
+    #      .save()
+    #      )
+    #     logger.info("Write to BigQuery completed without exception.")
+    # except Exception as e:
+    #     logger.error("Error while writing to BigQuery: %s", e)
+    #     raise
+    # logger.info("Write to BigQuery completed")
+    # spark.stop()
     logger.info("Spark session stopped. Job completed successfully.")
 
 
