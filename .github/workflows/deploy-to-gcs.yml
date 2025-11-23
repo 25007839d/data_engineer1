@@ -13,7 +13,7 @@ jobs:
       GCP_PROJECT_ID: euphoric-axiom-475504-f3
 
       # Target GCS locations (folder-level)
-      COMPOSER_DAGS_BUCKET: gs://us-central1-dev-composer-de-2d5b7553-bucket/dags
+      COMPOSER_DAGS_BUCKET: gs://us-central1-dev-composer-de-01d6600f-bucket/dags
       JARS_BUCKET: gs://socourse_de_1/jars
 
     steps:
