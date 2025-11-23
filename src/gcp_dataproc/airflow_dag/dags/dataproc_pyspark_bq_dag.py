@@ -32,7 +32,7 @@ default_args = {
 }
 
 with DAG(
-    'dataproc_pyspark_pipeline',
+    'dataproc_pyspark_pipeline_bq',
     default_args=default_args,
     schedule_interval='59 * * * *',
     catchup=False,
