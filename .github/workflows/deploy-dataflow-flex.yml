@@ -1,17 +1,38 @@
 name: Deploy Dataflow Flex Template
+
 on:
   push:
     branches: [ "main" ]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: google-github-actions/auth@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
-      - uses: google-github-actions/setup-gcloud@v2
-      - run: |
-          gcloud builds submit --tag gcr.io/euphoric-axiom-475504-f3/csv-join:latest
-      - run: |
-          gcloud dataflow flex-template build gs://socourse_de_1/templates/csv_join.json             --image gcr.io/euphoric-axiom-475504-f3/csv-join:latest             --sdk-language PYTHON             --metadata-file metadata.json
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      # Build Docker image
+      - name: Build Flex Template Docker Image
+        working-directory: src/apache_beam/gcp_dataflow_template
+        run: |
+          gcloud builds submit \
+            --tag gcr.io/euphoric-axiom-475504-f3/csv-join:latest .
+
+      # Create Flex Template JSON
+      - name: Build Dataflow Flex Template
+        working-directory: src/apache_beam/gcp_dataflow_template
+        run: |
+          gcloud dataflow flex-template build \
+            gs://socourse_de_1/templates/csv_join.json \
+            --image gcr.io/euphoric-axiom-475504-f3/csv-join:latest \
+            --sdk-language PYTHON \
+            --metadata-file metadata.json
