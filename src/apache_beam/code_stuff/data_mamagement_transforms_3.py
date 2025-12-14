@@ -22,7 +22,7 @@ if __name__ == '__main__':
         # -----------------------
         employees = (
             p
-            | "Read CSV" >> beam.io.ReadFromText("data/employees.csv", skip_header_lines=1)
+            | "Read CSV" >> beam.io.ReadFromText("../data/employees.csv", skip_header_lines=1)
             | "Split CSV" >> beam.Map(lambda line: line.split(","))
         )
 
@@ -59,9 +59,9 @@ if __name__ == '__main__':
 
         # -----------------------
         # 6. WindowInto: Fixed windows of 1 minute
-        # -----------------------
-        windowed = (
-            employees
-            | "Assign Window" >> beam.WindowInto(window.FixedWindows(60))
-            | "Print Windowed" >> beam.Map(print)
-        )
+        # # -----------------------
+        # windowed = (
+        #     employees
+        #     | "Assign Window" >> beam.WindowInto(window.FixedWindows(60))
+        #     | "Print Windowed" >> beam.Map(print)
+        # )

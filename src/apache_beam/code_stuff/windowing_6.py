@@ -29,7 +29,7 @@ if __name__ == '__main__':
         # Read CSV and split
         employees = (
             p
-            | "Read CSV" >> beam.io.ReadFromText("data/employees.csv", skip_header_lines=1)
+            | "Read CSV" >> beam.io.ReadFromText("../data/employees.csv", skip_header_lines=1)
             | "Split CSV" >> beam.Map(lambda line: line.split(","))
             | "Add Timestamp" >> beam.Map(add_timestamp)  # assign simulated timestamps
         )

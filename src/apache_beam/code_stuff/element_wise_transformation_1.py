@@ -1,5 +1,5 @@
 import apache_beam as beam
-from apache_beam.options.pipeline_options import PipelineOptions
+import apache_beam.options.pipeline_options
 
 # ---------------------------
 # Custom DoFn for ParDo
@@ -10,18 +10,20 @@ class SalaryCheck(beam.DoFn):
         if int(element[4]) > 60000:
             yield element
 
-# ---------------------------
+# ---------------------------gh
 # Pipeline
 # ---------------------------
 if __name__ == '__main__':
-    options = PipelineOptions()
+    options = apache_beam.options.pipeline_options.PipelineOptions()
     with beam.Pipeline(options=options) as p:
 
         # 1. Read CSV
         employees = (
             p
-            | "Read CSV" >> beam.io.ReadFromText("data/employees.csv", skip_header_lines=1)
+            | "Read CSV" >> beam.io.ReadFromText("../data/employees.csv", skip_header_lines=1)
+
             | "Split CSV" >> beam.Map(lambda line: line.split(","))
+            # | "see read data" >> beam.Map(print)
         )
 
         # -----------------------
@@ -30,7 +32,7 @@ if __name__ == '__main__':
         increased_salary = (
             employees
             | "Increase Salary" >> beam.Map(lambda x: [x[0], x[1], x[2], x[3], str(int(x[4])*1.1), x[5]])
-            | "Print Increased Salary" >> beam.Map(print)
+            # | "Print Increased Salary" >> beam.Map(print)
         )
 
         # -----------------------
@@ -39,7 +41,7 @@ if __name__ == '__main__':
         name_chars = (
             employees
             | "Split Names to Chars" >> beam.FlatMap(lambda x: list(x[1]))
-            | "Print Name Chars" >> beam.Map(print)
+            # | "Print Name Chars" >> beam.Map(print)
         )
 
         # -----------------------
@@ -48,7 +50,7 @@ if __name__ == '__main__':
         filtered_dept = (
             employees
             | "Filter Dept" >> beam.Filter(lambda x: x[5] in ["Finance", "IT"])
-            | "Print Filtered Dept" >> beam.Map(print)
+            # | "Print Filtered Dept" >> beam.Map(print)
         )
 
         # -----------------------
@@ -57,5 +59,5 @@ if __name__ == '__main__':
         high_salary = (
             employees
             | "Salary Check ParDo" >> beam.ParDo(SalaryCheck())
-            | "Print High Salary" >> beam.Map(print)
+            # | "Print High Salary" >> beam.Map(print)
         )

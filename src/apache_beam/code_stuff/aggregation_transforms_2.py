@@ -8,7 +8,7 @@ if __name__ == '__main__':
         # 1. Read CSV and split
         employees = (
             p
-            | "Read CSV" >> beam.io.ReadFromText("data/employees.csv", skip_header_lines=1)
+            | "Read CSV" >> beam.io.ReadFromText("../data/employees.csv", skip_header_lines=1)
             | "Split CSV" >> beam.Map(lambda line: line.split(","))
         )
 
@@ -19,7 +19,7 @@ if __name__ == '__main__':
             employees
             | "Dept-Name Pair" >> beam.Map(lambda x: (x[5], x[1]))  # (dept, name)
             | "Group By Dept" >> beam.GroupByKey()
-            | "Print GroupByKey" >> beam.Map(print)
+            # | "Print GroupByKey" >> beam.Map(print)
         )
 
         # -----------------------
@@ -29,7 +29,7 @@ if __name__ == '__main__':
             employees
             | "Extract Salary" >> beam.Map(lambda x: int(x[4]))
             | "Sum Salary Globally" >> beam.CombineGlobally(sum)
-            | "Print Total Salary" >> beam.Map(print)
+            # | "Print Total Salary" >> beam.Map(print)
         )
 
         # -----------------------
@@ -39,7 +39,7 @@ if __name__ == '__main__':
             employees
             | "Dept-Salary Pair" >> beam.Map(lambda x: (x[5], int(x[4])))
             | "Sum Salary Per Dept" >> beam.CombinePerKey(sum)
-            | "Print CombinePerKey" >> beam.Map(print)
+            # | "Print CombinePerKey" >> beam.Map(print)
         )
 
         # -----------------------
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         total_employees = (
             employees
             | "Count All Employees" >> beam.combiners.Count.Globally()
-            | "Print Total Employees" >> beam.Map(print)
+            # | "Print Total Employees" >> beam.Map(print)
         )
 
         # -----------------------
@@ -58,12 +58,13 @@ if __name__ == '__main__':
             employees
             | "Dept as Key" >> beam.Map(lambda x: (x[5], 1))
             | "Count Per Dept" >> beam.combiners.Count.PerKey()
-            | "Print Count PerKey" >> beam.Map(print)
+            # | "Print Count PerKey" >> beam.Map(print)
         )
 
         # -----------------------
         # Mean.Globally: Average salary of all employees
         # -----------------------
+
         avg_salary_global = (
             employees
             | "Salary Globally" >> beam.Map(lambda x: int(x[4]))
@@ -78,7 +79,7 @@ if __name__ == '__main__':
             employees
             | "Dept-Salary Pair for Mean" >> beam.Map(lambda x: (x[5], int(x[4])))
             | "Mean Per Dept" >> beam.combiners.Mean.PerKey()
-            | "Print Mean PerKey" >> beam.Map(print)
+            # | "Print Mean PerKey" >> beam.Map(print)
         )
 
         # -----------------------
@@ -88,7 +89,7 @@ if __name__ == '__main__':
             employees
             | "Extract Salary for Top" >> beam.Map(lambda x: int(x[4]))
             | "Top 3 Salaries" >> beam.combiners.Top.Of(3)
-            | "Print Top Salaries" >> beam.Map(print)
+            # | "Print Top Salaries" >> beam.Map(print)
         )
 
         # -----------------------
@@ -98,5 +99,5 @@ if __name__ == '__main__':
             employees
             | "Dept-Salary Pair for Top" >> beam.Map(lambda x: (x[5], int(x[4])))
             | "Top 2 Per Dept" >> beam.combiners.Top.PerKey(2)
-            | "Print Top PerKey" >> beam.Map(print)
+            # | "Print Top PerKey" >> beam.Map(print)
         )

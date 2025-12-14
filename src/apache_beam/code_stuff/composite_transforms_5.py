@@ -42,7 +42,7 @@ if __name__ == '__main__':
         # Read CSV
         employees = (
             p
-            | "Read CSV" >> beam.io.ReadFromText("data/employees.csv", skip_header_lines=1)
+            | "Read CSV" >> beam.io.ReadFromText("../data/employees.csv", skip_header_lines=1)
             | "Split CSV" >> beam.Map(lambda line: line.split(","))
         )
 
