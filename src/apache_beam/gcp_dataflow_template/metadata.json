@@ -1,9 +1,24 @@
 {
-  "name": "csv-left-join-dataflow",
-  "description": "CSV left join Dataflow Flex Template",
+  "name": "CSV Join Template",
+  "description": "Joins employees and departments CSV files",
   "parameters": [
-    {"name": "input_employees", "label": "Employees CSV", "paramType": "TEXT"},
-    {"name": "input_departments", "label": "Departments CSV", "paramType": "TEXT"},
-    {"name": "output_path", "label": "Output Path", "paramType": "TEXT"}
+    {
+      "name": "input_employees",
+      "label": "Employees CSV",
+      "helpText": "GCS path to employees CSV file",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "input_departments",
+      "label": "Departments CSV",
+      "helpText": "GCS path to departments CSV file",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "output",
+      "label": "Output Path",
+      "helpText": "GCS output path for joined results",
+      "paramType": "TEXT"
+    }
   ]
 }
