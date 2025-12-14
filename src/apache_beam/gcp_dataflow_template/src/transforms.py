@@ -10,6 +10,7 @@ def parse_employee(line):
         "is_active": is_active.strip()
     }
 
+
 def parse_department(line):
     dept_id, dept_name, location = line.split(",")
     return {
