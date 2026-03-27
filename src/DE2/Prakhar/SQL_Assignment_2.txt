@@ -1,0 +1,179 @@
+Q1
+SELECT DISTINCT c.cname FROM Customer c JOIN Ser_det s ON c.cid = s.cid;
+
+Q2
+SELECT cname FROM Customer WHERE cid NOT IN (SELECT cid FROM Ser_det);
+
+Q3
+SELECT ename FROM Employee WHERE commission IS NULL OR commission = 0;
+
+Q4
+SELECT ename FROM Employee WHERE commission = (SELECT MAX(commission) FROM Employee);
+
+Q5
+SELECT ename, commission FROM Employee WHERE commission = (SELECT MIN(commission) FROM Employee);
+
+Q6
+SELECT * FROM Employee LIMIT 1 OFFSET (SELECT COUNT(*)/2 FROM Employee);
+
+Q7
+SELECT * FROM Employee ORDER BY eid DESC LIMIT 4;
+
+Q8
+SELECT MAX(rownum) FROM (SELECT @rownum:=@rownum+1 AS rownum FROM Employee, (SELECT @rownum:=0) r) t;
+
+Q9
+DELETE FROM Ser_det WHERE cid NOT IN (SELECT MIN(cid) FROM Ser_det GROUP BY cid); ROLLBACK;
+
+Q10
+SELECT c.cname FROM Customer c JOIN Ser_det s ON c.cid = s.cid WHERE s.service_amount = (SELECT MAX(service_amount) FROM Ser_det);
+
+Q11
+SELECT ename FROM Employee WHERE status = 'Not Working';
+
+Q12
+SELECT COUNT(DISTINCT cid) FROM Ser_det WHERE vehicle_type = 'Two Wheeler';
+
+Q13
+SELECT DISTINCT sp.spname, sp.unit FROM Sparepart sp JOIN Ser_det s ON sp.spid = s.spid;
+
+Q14
+SELECT DISTINCT c.cname FROM Customer c JOIN Ser_det s ON c.cid = s.cid JOIN Sparepart sp ON s.spid = sp.spid WHERE sp.spname LIKE '%color%';
+
+Q15
+SELECT ename, (salary*12 + IFNULL(commission,0)) AS annual_income FROM Employee;
+
+Q16
+SELECT DISTINCT v.vname FROM Vendors v JOIN Purchase p ON v.vid = p.vid JOIN Sparepart sp ON p.spid = sp.spid WHERE sp.spname LIKE '%engine oil%';
+
+Q17
+SELECT sp.spname, SUM(p.quantity * p.rate) AS total_cost FROM Sparepart sp JOIN Purchase p ON sp.spid = p.spid WHERE sp.spname LIKE '%color%' GROUP BY sp.spname;
+
+Q18
+SELECT spname FROM Sparepart WHERE spid NOT IN (SELECT spid FROM Ser_det);
+
+Q19
+SELECT spname FROM Sparepart WHERE spid NOT IN (SELECT spid FROM Purchase);
+
+Q20
+SELECT (SUM(service_amount) - (SELECT SUM(salary) FROM Employee)) AS profit_loss FROM Ser_det;
+
+Q21
+SELECT c.cname FROM Customer c JOIN Ser_det s ON c.cid = s.cid GROUP BY c.cid HAVING COUNT(*) > 1;
+
+Q22
+SELECT v.location, sp.spname FROM Vendors v JOIN Purchase p ON v.vid = p.vid JOIN Sparepart sp ON p.spid = sp.spid;
+
+Q23
+SELECT vehicle_type, COUNT(*) FROM Ser_det GROUP BY vehicle_type;
+
+Q24
+SELECT cname, spname FROM Customer c JOIN Ser_det s ON c.cid = s.cid JOIN Sparepart sp ON s.spid = sp.spid WHERE s.spgst = (SELECT MAX(spgst) FROM Ser_det);
+
+Q25
+SELECT v.vname, sp.spname FROM Vendors v JOIN Purchase p ON v.vid = p.vid JOIN Sparepart sp ON p.spid = sp.spid WHERE p.spgst = (SELECT MAX(spgst) FROM Purchase);
+
+Q26
+SELECT sp.spname, e.ename FROM Sparepart sp JOIN Purchase p ON sp.spid = p.spid JOIN Employee e ON p.eid = e.eid;
+
+Q27
+SELECT c.cname, s.sid, sp.spname, p.purchase_date, v.vname, sp.unit, v.location, e.ename FROM Ser_det s JOIN Customer c ON s.cid = c.cid JOIN Employee e ON s.eid = e.eid JOIN Sparepart sp ON s.spid = sp.spid JOIN Purchase p ON sp.spid = p.spid JOIN Vendors v ON p.vid = v.vid WHERE s.vehicle_no = 'MH-14PA335';
+
+Q28
+SELECT cname FROM Customer c JOIN Ser_det s ON c.cid = s.cid WHERE s.vehicle_no = 'MH-14PA335';
+
+Q29
+SELECT c.cname, s.service_date FROM Customer c JOIN Ser_det s ON c.cid = s.cid WHERE c.city = 'New York';
+
+Q30
+SELECT v.vname FROM Vendors v JOIN Purchase p ON v.vid = p.vid WHERE p.rate = (SELECT MAX(rate) FROM Purchase);
+
+Q31
+SELECT DISTINCT e.ename FROM Employee e JOIN Ser_det s ON e.eid = s.eid WHERE e.job <> 'Mechanic';
+
+Q32
+SELECT job, COUNT(*) FROM Employee GROUP BY job HAVING COUNT(*) > 2;
+
+Q33
+SELECT ename, COUNT(sid) AS total_services, RANK() OVER (ORDER BY COUNT(sid) DESC) rnk FROM Employee e JOIN Ser_det s ON e.eid = s.eid GROUP BY ename;
+
+Q34
+SELECT job, COUNT(s.sid) FROM Employee e JOIN Ser_det s ON e.eid = s.eid WHERE job IN ('Painter','Fitter') GROUP BY job;
+
+Q35
+SELECT ename, salary, CASE WHEN salary > 50000 THEN 'A' WHEN salary > 30000 THEN 'B' WHEN salary > 20000 THEN 'C' ELSE 'D' END grade FROM Employee;
+
+Q36
+SELECT * FROM Employee LIMIT 1 OFFSET 3;
+
+Q37
+UPDATE Employee SET commission = 100 WHERE commission IS NULL OR commission = 0;
+
+Q38
+SELECT service_date, COUNT(*) FROM Ser_det GROUP BY service_date ORDER BY COUNT(*) DESC;
+
+Q39
+SELECT * FROM Ser_det s JOIN Customer c ON s.cid = c.cid WHERE c.city IN (SELECT city FROM Customer GROUP BY city HAVING COUNT(*) > 1);
+
+Q40
+SELECT c1.cname, c2.cname FROM Customer c1 JOIN Customer c2 ON c1.cid <> c2.cid;
+
+Q41
+SELECT s.sid, c.cname FROM Ser_det s JOIN Customer c ON s.cid = c.cid;
+
+Q42
+SELECT ename, CASE WHEN COUNT(sid) > 10 THEN 'A' WHEN COUNT(sid) > 5 THEN 'B' WHEN COUNT(sid) > 2 THEN 'C' ELSE 'D' END rating FROM Employee e JOIN Ser_det s ON e.eid = s.eid GROUP BY ename;
+
+Q43
+SELECT c.*, MAX(service_amount) FROM Customer c JOIN Ser_det s ON c.cid = s.cid GROUP BY c.cid;
+
+Q44
+SELECT c.cname, COUNT(s.sid) FROM Customer c JOIN Ser_det s ON c.cid = s.cid GROUP BY c.cname;
+
+Q45
+SELECT location FROM Vendors v JOIN Purchase p ON v.vid = p.vid WHERE p.rate = (SELECT MAX(rate) FROM Purchase);
+
+Q46
+SELECT * FROM Employee e JOIN Ser_det s ON e.eid = s.eid WHERE salary IS NULL;
+
+Q47
+SELECT location, SUM(rate*quantity) FROM Vendors v JOIN Purchase p ON v.vid = p.vid GROUP BY location;
+
+Q48
+SELECT location, TO_CHAR(SUM(rate*quantity),'999,999') FROM Vendors v JOIN Purchase p ON v.vid = p.vid GROUP BY location;
+
+Q49
+SELECT cname FROM Customer c JOIN Ser_det s ON c.cid = s.cid GROUP BY cname HAVING SUM(service_amount) = (SELECT MAX(total) FROM (SELECT SUM(service_amount) total FROM Ser_det GROUP BY cid) t);
+
+Q50
+SELECT cid, SUM(service_amount) FROM Ser_det GROUP BY cid HAVING SUM(service_amount) > (SELECT MAX(service_amount) FROM Ser_det);
+
+Q51
+SELECT c.cname, sp.spname, s.vehicle_type FROM Customer c JOIN Ser_det s ON c.cid = s.cid JOIN Sparepart sp ON s.spid = sp.spid;
+
+Q52
+SELECT sp.spname, e.ename, c.cname, p.quantity, p.rate, s.service_amount FROM Ser_det s JOIN Customer c ON s.cid = c.cid JOIN Employee e ON s.eid = e.eid JOIN Sparepart sp ON s.spid = sp.spid JOIN Purchase p ON sp.spid = p.spid;
+
+Q53
+SELECT cname FROM Customer c JOIN Ser_det s ON c.cid = s.cid JOIN Sparepart sp ON s.spid = sp.spid WHERE sp.spname LIKE '%tube%';
+
+Q54
+SELECT * FROM Ser_det WHERE service_type = 'Full';
+
+Q55
+SELECT ename FROM Employee WHERE eid NOT IN (SELECT eid FROM Ser_det) AND status = 'Left';
+
+Q56
+SELECT * FROM Employee ORDER BY hiredate LIMIT 1;
+
+Q57
+SELECT * FROM Ser_det WHERE DAY(service_date) % 2 = 1;
+
+Q58
+SELECT * FROM Ser_det WHERE DAY(service_date) % 2 = 0;
+
+Q59
+SELECT v.vname FROM Vendors v JOIN Purchase p ON v.vid = p.vid WHERE p.spid NOT IN (SELECT spid FROM Ser_det);
+
+Q60
+SELECT DATEDIFF(s.service_date, p.purchase_date) FROM Ser_det s JOIN Purchase p ON s.spid = p.spid;
