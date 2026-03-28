@@ -108,3 +108,12 @@ for i in range(5):
     num = int(input(f"Enter number {i+1}: "))
     numbers.append(num)
 print("List of numbers:", numbers)
+##############
+numbers = []
+# Adding elements
+numbers.append(10)
+numbers.append(20)
+numbers.append(30)
+numbers.append(40)
+numbers.append(50)
+print("List after adding elements:", numbers)
