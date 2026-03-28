@@ -197,7 +197,7 @@ for i in range(1, 21):
 num = int(input("Enter a number: "))
 for i in range(1, 11):
     print(num, "x", i, "=", num * i)
-    
+
 #
 n = int(input("Enter a number: "))
 sum = 0
@@ -225,6 +225,7 @@ for i in range(1, 11):
 for i in range(1, 7):
     for j in range(i):
         print("#", end=" ")
-    print() 
+    print()
+aa=10
 
 
