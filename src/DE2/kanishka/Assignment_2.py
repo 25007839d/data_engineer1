@@ -1,11 +1,3 @@
-import math
-import random
-import string
-from collections import Counter, OrderedDict
-from itertools import permutations
-from difflib import get_close_matches
-from operator import itemgetter
-
 # 1 Factorial
 def factorial(n):
     return 1 if n<=1 else n*factorial(n-1)
