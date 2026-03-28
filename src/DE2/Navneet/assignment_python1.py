@@ -117,3 +117,115 @@ numbers.append(30)
 numbers.append(40)
 numbers.append(50)
 print("List after adding elements:", numbers)
+#Inserting element 
+numbers = [10, 20, 30, 40, 50]
+# Taking input
+element = int(input("Enter element to insert: "))
+position = int(input("Enter position (index): "))
+numbers.insert(position, element)
+print("Updated list:", numbers)
+#sorting list
+list1 = [9,2,3,5,7]
+list.sort(list1)
+print(list1)
+#reverse list
+list1 = [9,2,3,5,7]
+list.reverse(list1)
+print(list1)
+#count number occerance element
+num= [3,4,8,3,6,8,3,2]
+temp = 3
+count = num.count(temp)
+print("temp appears", count)
+#printlargestnumber
+num = [10, 45, 23, 89, 67]
+largest = num[0]
+for i in num:
+    if i > largest:
+        largest = i
+print("Largest number is:", largest)
+#creat tuple
+a = int(input("Enter element 1: "))
+b = int(input("Enter element 2: "))
+c = int(input("Enter element 3: "))
+d = int(input("Enter element 4: "))
+e = int(input("Enter element 5: "))
+t = (a, b, c, d, e)
+print("Tuple is:", t)
+# number of occerance element
+t = (10, 20, 10, 30, 10, 40)
+value = 10
+result = t.count(value)
+print("Value appears", result)
+#search element
+t = (10, 20, 30, 40, 50)
+x = int(input("Enter element to find index: "))
+if x in t:
+    print("Index is:", t.index(x))
+else:
+    print("Element not found")
+
+#create dic
+student = {
+    "name": "Navneet",
+    "roll_no": 101,
+    "class": "10th",
+    "marks": 85
+}
+print(student)
+#add new value in dic
+student = {
+    "name": "Navneet",
+    "roll_no": 101
+}
+student["marks"] = 90
+print(student)
+#pint 1-10
+i = 1
+while i <= 10:
+    print(i)
+    i = i+1
+#
+for i in range(1,11):
+    print(i)
+
+# print even
+for i in range(1, 21):
+    if i % 2 == 0:
+        print(i)
+#
+num = int(input("Enter a number: "))
+for i in range(1, 11):
+    print(num, "x", i, "=", num * i)
+
+#
+n = int(input("Enter a number: "))
+sum = 0
+for i in range(1, n + 1):
+    sum += i
+print(sum)
+
+n = int(input("Enter a number: "))
+for i in range(n, 0, -1):
+    print(i)
+
+#   
+for i in range(1, 11):
+    if i == 6:
+        break   
+    print(i)
+
+#
+for i in range(1, 11):
+     if i == 6:
+      continue
+     print(i)
+
+# pattern
+for i in range(1, 7):
+    for j in range(i):
+        print("#", end=" ")
+    print()
+aa=10
+
+
