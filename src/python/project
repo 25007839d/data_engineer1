@@ -1,0 +1,152 @@
+"""
+Mini Project for Learning Python Basics
+
+Concepts Covered:
+- Argument Parser
+- CSV Processing
+- Decorator
+- Exception Handling
+- Input
+- Logging
+- OS Module
+- Output File
+- Polymorphism
+- super() method
+"""
+
+import argparse
+import csv
+import logging
+import os
+
+
+# ==========================
+# LOGGING (stores logs in file)
+# ==========================
+logging.basicConfig(
+    filename="log.txt",  # log file name
+    level=logging.INFO   # store INFO level logs
+)
+
+
+# ==========================
+# DECORATOR
+# This function wraps another function
+# ==========================
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print("🔹 Starting function...")
+        result = func(*args, **kwargs)
+        print("🔹 Function finished")
+        return result
+    return wrapper
+
+
+# ==========================
+# BASE CLASS (Polymorphism)
+# ==========================
+class BaseProcessor:
+    def __init__(self, file):
+        self.file = file
+
+    def process(self):
+        print("This is base class method")
+
+
+# ==========================
+# CHILD CLASS (inherits Base)
+# ==========================
+class CSVProcessor(BaseProcessor):
+
+    def __init__(self, file):
+        # super() calls parent class constructor
+        super().__init__(file)
+
+    @my_decorator   # applying decorator
+    def process(self):
+
+        data = []
+
+        # Exception handling
+        try:
+            with open(self.file, "r") as f:
+                reader = csv.DictReader(f)
+
+                for row in reader:
+                    # Convert numeric values
+                    for key in row:
+                        if row[key].isdigit():
+                            row[key] = int(row[key])
+                    data.append(row)
+
+            print("✅ File processed successfully")
+
+        except FileNotFoundError:
+            print("❌ File not found")
+            logging.error("File not found")
+
+        except Exception as e:
+            print("❌ Error:", e)
+            logging.error(str(e))
+
+        return data
+
+
+# ==========================
+# WRITE OUTPUT FILE
+# ==========================
+@my_decorator
+def write_file(data, output_file):
+
+    if not data:
+        print("No data to write")
+        return
+
+    keys = data[0].keys()
+
+    with open(output_file, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=keys)
+        writer.writeheader()
+        writer.writerows(data)
+
+    print("✅ Output saved in:", output_file)
+
+
+# ==========================
+# MAIN FUNCTION
+# ==========================
+def main():
+
+    # Argument parser (for command line input)
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--input", help="Input CSV file")
+    parser.add_argument("--output", help="Output CSV file")
+
+    args = parser.parse_args()
+
+    # OS module → check file exists
+    if not os.path.exists(args.input):
+        print("❌ File does not exist")
+        return
+
+    # User input
+    choice = input("Process file? (yes/no): ")
+
+    if choice != "yes":
+        print("Cancelled")
+        return
+
+    # Polymorphism (base reference)
+    processor = CSVProcessor(args.input)
+
+    data = processor.process()
+
+    write_file(data, args.output)
+
+
+# ==========================
+# START PROGRAM
+# ==========================
+if __name__ == "__main__":
+    main()
