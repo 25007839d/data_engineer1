@@ -69,6 +69,52 @@ def armstrong_number_recursive(n):
     
     return armstrong_sum(0) == n
 
+def sum_of_array(arr):
+    total = 0
+    for num in arr:
+        total += num
+    return total
+
+def sum_of_array_recursive(arr):
+    if not arr:
+        return 0
+    else:
+        return arr[0] + sum_of_array_recursive(arr[1:])
+
+def array_largest_element(arr):
+    if not arr:
+        raise ValueError("Array cannot be empty.")
+    
+    largest = arr[0]
+    for num in arr:
+        if num > largest:
+            largest = num
+    return largest
+
+def array_largest_element_recursive(arr):
+    if not arr:
+        raise ValueError("Array cannot be empty.")
+    
+    if len(arr) == 1:
+        return arr[0]
+    
+    largest_in_rest = array_largest_element_recursive(arr[1:])
+    return arr[0] if arr[0] > largest_in_rest else largest_in_rest
+
+def array_rotate_left(arr, d):
+    n = len(arr)
+    d = d % n  # Handle cases where d >= n
+    return arr[d:] + arr[:d]
+
+def array_rotate_right(arr, d):
+    n = len(arr)
+    d = d % n  # Handle cases where d >= n
+    return arr[-d:] + arr[:-d]
+
+def array_reverse(arr):
+    return arr[::-1]
+
+
 if __name__ == "__main__":
     print(febonacci(10))
     print(febonacci_recursive(10))
@@ -76,3 +122,10 @@ if __name__ == "__main__":
     print(factorial_recursive(5))
     print(armstrong_number(153))
     print(armstrong_number_recursive(153))
+    print(sum_of_array([1, 2, 3, 4, 5]))
+    print(sum_of_array_recursive([1, 2, 3, 4, 5]))
+    print(array_largest_element([1, 2, 3, 4, 5]))
+    print(array_largest_element_recursive([1, 2, 3, 4, 5]))
+    print(array_rotate_left([1, 2, 3, 4, 5], 2))
+    print(array_rotate_right([1, 2, 3, 4, 5], 2))
+    print(array_reverse([1, 2, 3, 4, 5]))
