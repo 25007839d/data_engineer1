@@ -1,0 +1,223 @@
+Session 1: Database, ETL & SQL Basics
+Practice Questions (14)
+Create a database schema named training.
+Create a student table.
+Create an employee table with 5 columns.
+Insert 5 employee records.
+Display all records.
+Display only employee names.
+Display only salary column.
+Insert a record with NULL values.
+Create department table.
+Insert 3 department records.
+Display table structure.
+Find total rows in employee table.
+Create machine_master table.
+Insert 5 machine records.
+Theory Questions (6)
+What is Database?
+What is ETL?
+Difference between DBMS and RDBMS?
+What is SQL?
+SQL Command Types?
+What is Schema?
+
+
+Session 2: DDL, Alias & Constraints
+Practice Questions (14)
+Create student table using NOT NULL.
+Create employee table using PRIMARY KEY.
+Create department table using UNIQUE.
+Add CHECK constraint on salary.
+Create FOREIGN KEY relationship.
+Add column email using ALTER.
+Modify column size.
+Rename column.
+Drop a column.
+Rename table.
+Create composite primary key.
+Create table with all constraints.
+Create machine_master table with PK.
+Create sensor_data table with FK.
+Theory Questions (6)
+What is NOT NULL?
+What is CHECK?
+What is UNIQUE?
+Difference between PK and UNIQUE?
+What is FK?
+What is Referential Integrity?
+
+
+Session 3: WHERE, ORDER BY & Operators
+Practice Questions (14)
+Find employees with salary > 50000.
+Find employees with salary < 50000.
+Find employees with salary BETWEEN 30000 and 60000.
+Find employees from IT department.
+Find employees from IT OR HR.
+Find employees not from IT.
+Find names starting with A.
+Find names ending with n.
+Find names containing "ar".
+Sort employees by salary ascending.
+Sort employees by salary descending.
+Sort by department and salary.
+Find employees with NULL manager.
+Find employees using IN operator.
+Theory Questions (6)
+Difference between WHERE and HAVING?
+What is LIKE?
+What is BETWEEN?
+What is IN?
+What is ORDER BY?
+Explain Logical Operators.
+
+
+Session 4: Numeric & String Functions
+Practice Questions (14)
+Use ROUND on decimal values.
+Use TRUNC function.
+Use ABS function.
+Use MOD function.
+Convert names to UPPER.
+Convert names to LOWER.
+Use INITCAP.
+Find LENGTH of employee names.
+Extract first 3 chars using SUBSTR.
+Find position using INSTR.
+Replace word using REPLACE.
+Concatenate first and last name.
+Trim spaces.
+Create formatted employee names.
+Theory Questions (6)
+Difference between ROUND and TRUNC?
+What is SUBSTR?
+What is INSTR?
+What is CONCAT?
+What is INITCAP?
+Explain String Functions.
+
+
+Session 5: Date & Conversion Functions
+Practice Questions (14)
+Display current date.
+Add 30 days to current date.
+Add 6 months.
+Find age using MONTHS_BETWEEN.
+Display last day of month.
+Display next Monday.
+Extract year.
+Extract month.
+Convert string to date.
+Convert date to string.
+Use NVL.
+Use COALESCE.
+Import CSV file.
+Export query result.
+Theory Questions (6)
+What is SYSDATE?
+Difference between TO_DATE and TO_CHAR?
+What is NVL?
+What is COALESCE?
+What is EXTRACT?
+Explain Date Functions.
+
+
+Session 6: Group Functions, Set Operators & Joins
+Practice Questions (14)
+Find total salary.
+Find average salary.
+Find maximum salary.
+Find minimum salary.
+Count employees.
+Count employees per department.
+Use GROUP BY department.
+Use UNION.
+Use UNION ALL.
+Use INTERSECT.
+Use MINUS.
+Perform INNER JOIN.
+Perform LEFT JOIN.
+Perform RIGHT JOIN.
+Theory Questions (6)
+Difference between UNION and UNION ALL?
+What is INTERSECT?
+What is MINUS?
+What is INNER JOIN?
+What is LEFT JOIN?
+What is SELF JOIN?
+
+
+Session 7: Subqueries & Window Functions
+Practice Questions (14)
+Find highest salary.
+Find second highest salary.
+Find employees above average salary.
+Use IN subquery.
+Use EXISTS.
+Use NOT EXISTS.
+Create correlated subquery.
+Use ROW_NUMBER.
+Use RANK.
+Use DENSE_RANK.
+Use NTILE.
+Use LEAD.
+Use LAG.
+Find top salary per department.
+Theory Questions (6)
+What is Subquery?
+What is Correlated Subquery?
+Difference between EXISTS and IN?
+Difference between RANK and DENSE_RANK?
+What is Window Function?
+What is PARTITION BY?
+
+
+Session 8: CTE, Views, Indexes
+Practice Questions (14)
+Create simple CTE.
+Create multiple CTEs.
+Create CTE with JOIN.
+Create simple view.
+Create complex view.
+Create materialized view.
+Create unique index.
+Create bitmap index.
+Create composite index.
+Create function-based index.
+Create reverse key index.
+Generate explain plan.
+Normalize student table to 1NF.
+Convert 1NF to 2NF.
+Theory Questions (6)
+What is CTE?
+Difference between View and Materialized View?
+What is Index?
+What is Bitmap Index?
+What is 3NF?
+What is BCNF?
+
+
+Session 9: Final Assessment
+Practice Questions (14)
+Create complete Employee-Department schema.
+Apply all constraints.
+Load sample data.
+Write join query.
+Write group by query.
+Write subquery.
+Write window function query.
+Create view.
+Create materialized view.
+Create index.
+Generate explain plan.
+Normalize schema.
+Denormalize schema.
+Build employee dashboard query.
+Theory Questions (6)
+Difference between Normalization and Denormalization?
+Difference between PK and FK?
+Difference between View and CTE?
+Difference between UNION and JOIN?
+How to optimize SQL query?
+Explain SQL execution order.
