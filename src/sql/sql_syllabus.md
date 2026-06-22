@@ -27,55 +27,20 @@ Limiting Results (ROWNUM, FETCH FIRST n ROWS)
 
 # 3. Intermediate SQL
 
-Functions
-String Functions (UPPER, LOWER, SUBSTR, INSTR, TRIM)
+WHERE Clause,
+Operators,
+ORDER BY,
+Aliases,
+Single Row Functions 
+Group Functions
 
-Numeric Functions (ROUND, TRUNC, MOD)
+# 4. Functions
 
-Date Functions (SYSDATE, ADD_MONTHS, MONTHS_BETWEEN)
-
-Conversion Functions (TO_CHAR, TO_DATE, CAST)
-
-Operators
-
-Arithmetic (+, -, *, /)
-Logical (AND, OR, NOT)
-Comparison (=, >, <, !=, <>)
-
-Joins
-
-INNER JOIN
-LEFT JOIN
-RIGHT JOIN
-FULL OUTER JOIN
-CROSS JOIN
-SELF JOIN
-Equi & Non-Equi Joins
-Natural Join
-
-Set Operators
-
-UNION, UNION ALL
-INTERSECT
-MINUS
-
-# 4. Advanced SQL (Analytical Level)
-
-Subqueries
-Single Row Subquery
-Multi Row Subquery (IN, ANY, ALL)
-Correlated Subquery
-EXISTS / NOT EXISTS
-Nested Subqueries
-
-GROUPING
-
-GROUP BY
-HAVING
-Grouping Sets
-ROLLUP, CUBE
-Aggregate Functions
-COUNT, SUM, AVG, MAX, MIN
+Numeric Functions
+String Functions
+Date Functions
+Conversion Functions
+Group Functions
 
 # 5. Window / Analytical Functions
 
@@ -85,44 +50,39 @@ Aggregate Window Functions: SUM(), AVG(), MIN(), MAX() OVER()
 LEAD(), LAG(), FIRST_VALUE(), LAST_VALUE()
 PARTITION BY vs ORDER BY in window functions
 
-# 6. Advanced Data Modeling Concepts
+# 6. Advanced Concepts
 
-Normalization & Denormalization
-Star Schema & Snowflake Schema (Data Warehousing)
-Surrogate Keys vs Natural Keys
+GROUP FUNCTIONS,
+SET OPERATORS 
+JOINS
 
 # 7. Advanced SQL Developer Features
-
-SQL*Plus basics inside SQL Developer
-SQL Scripts execution (@script.sql)
-Bind Variables & Substitution Variables (&, :var)
-Execution Plans & Indexes (EXPLAIN PLAN)
-Performance Tuning Basics (Indexes, Hints, Optimizer)
-
+NULL Handling
+GROUP BY
+HAVING
+Subqueries (Single, Multi, Multiple, Correlated)
+EXISTS / NOT EXISTS
+Window Functions
+Star Schema vs Snowflake Schema
 # 8. Transactions & Security
 
-Transactions (COMMIT, ROLLBACK, SAVEPOINT)
-Isolation Levels
-DCL Commands: GRANT, REVOKE
-Roles & Privileges in Oracle
+CTE (Common Table Expression)
+Views
+Materialized Views
+Indexes (all types)
+Normalization
+Explain Plan
+Top-N Queries (FETCH FIRST N ROWS)
 
 # 9. PL/SQL (Procedural SQL – Oracle Specific)
 
-PL/SQL Basics: Block Structure
-Variables, Constants, Data Types
-Conditional Statements (IF-THEN-ELSE)
-Loops (FOR, WHILE, LOOP)
-Cursors (Implicit & Explicit)
-Procedures & Functions
-Triggers
-Packages & Exception Handling
+VIEWS,
+INDEXES,
+NORMALIZATION
+CONSTRAINTS
 
 # 10. Real-World / Advanced Topics
 
-Materialized Views
-
-Synonyms
-Sequences
 Indexes (B-Tree, Bitmap, Function-based)
 Partitioning (Range, List, Hash)
 Common Table Expressions (CTEs) & Recursive Queries (WITH)
