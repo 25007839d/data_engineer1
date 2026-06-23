@@ -1,0 +1,28 @@
+https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrame.unionByName.html
+
+Assignment Questions with Input data
+employee_detail.txt
+001,Yesh,Patil,29,M,011,20000
+002,Ram,Wagh,30,M,012,30000
+003,Sita,Patil,29,F,011,50000
+004,Kiran,XYZ,33,F,011,40052
+005,Savita,Waghmare,35,F,012,800000
+
+
+dept.txt
+deptno,deptname
+011,HR
+012,IT
+013,Production
+014,Infra
+
+employee_details1.txt
+001,Yesh,Patil,29,M,011,20000
+006,Ramesh,Kakde,30,M,014,30000
+007,Mangesh,Kute,29,M,014,50000
+
+1. average salary per department
+2. provide employee details who has second highest salary 
+3. retrieve employee_details with unique records from employee_detail.txt and employee_details1.txt and store them in different file.
+4. Create a dataframe from existing rdd/existing collection using various ways 
+5. Create a dataframe from csv file using various ways

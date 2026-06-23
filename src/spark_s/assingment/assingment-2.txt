@@ -1,0 +1,59 @@
+pyspark project
+1. https://sparkbyexamples.com/pyspark/  == try each example
+
+pyspark project 
+2. dataframe inbuild functions  - try 
+3. datetime function - try 
+
+
+Id	 name	price	date
+1	xyz	200	2021-01-01
+2	pqr	201	2021-01-01
+2	pqr	202	2021-01-02
+2	pqr	203	2021-01-03
+2	pqr	204	2021-01-04
+3	nmp	205	2021-01-01
+3	nmp	206	2021-01-03
+3	nmp	207	2021-01-06
+
+Question: 
+1. retrive record which is having maximue date with respective of id, name column 
+
+2. expected output as below 
+Id	 name	price	from_date	to_date
+1	xyz	200	2021-01-01	2999-12-31
+2	pqr	201	2021-01-01	2021-01-02
+2	pqr	202	2021-01-02	2021-01-03
+2	pqr	203	2021-01-03	2021-01-04
+2	pqr	204	2021-01-04	2999-12-31
+3	nmp	205	2021-01-01	2021-01-03
+3	nmp	206	2021-01-03	2021-01-06
+3	nmp	207	2021-01-06	2999-12-31
+
+
+
+
+Assignment Questions with Input data
+employee_detail.csv  -- last column referred as employee joining date -- yyyy-MM-dd
+001,Yesh,Patil,29,M,011,20000,2021-07-01
+002,Ram,Wagh,30,M,012,30000,2022-04-30
+003,Sita,Patil,29,F,011,50000,2020-01-01
+004,Kiran,XYZ,33,F,011,40052,2021-02-01
+005,Savita,Waghmare,35,F,012,800000,2022-05-01
+
+
+dept.csv
+deptno,deptname
+011,HR
+012,IT
+013,Production
+014,Infra
+
+try below question with RDD, Spark Dataframe, Spark SQL
+1. get employee details, who has salary more than avg salary of all the employees 
+2. get count of an employee based on joining month
+3. get a count of an employee based on joining year 
+4. get employee details with depart name who has joined in a leap year
+
+
+1. In any of your input file if you are getting \N or null values in your column and that column is of string type then put default value as "(unknown)" and if column is of type integer then put -1

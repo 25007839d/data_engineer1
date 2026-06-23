@@ -1,0 +1,142 @@
+Session 1: PySpark Foundations (Topics 1-4)
+Practice Questions
+Create an empty RDD using emptyRDD().
+Verify the count of an empty RDD.
+Create an empty DataFrame using StructType.
+Create a DataFrame with 3 columns using StructField.
+Create an RDD from a Python list using parallelize().
+Create an RDD with 2 partitions.
+Create an RDD with 4 partitions.
+Display partition data using glom().
+Find number of partitions using getNumPartitions().
+Convert an RDD into a DataFrame.
+Create employee DataFrame from list data.
+Display first 20 rows using show().
+Display only 5 rows using show(5).
+Display full column values using show(truncate=False).
+Create machine sensor DataFrame.
+Display DataFrame schema.
+Count rows in DataFrame.
+Create RDD of employee names.
+Convert RDD to list using collect().
+Build a DataFrame for machine master data.
+
+
+Session 2: Schema, Select and Column Operations (Topics 5-8)
+Practice Questions
+Create schema using StructType.
+Create schema with nullable=False columns.
+Create DataFrame using predefined schema.
+Create employee DataFrame with 5 columns.
+Select single column using select().
+Select multiple columns.
+Use alias while selecting columns.
+Display DataFrame schema.
+Retrieve all records using collect().
+Retrieve filtered records using collect().
+Create new column using withColumn().
+Add bonus column from salary.
+Add ingestion timestamp column.
+Convert string column to uppercase using withColumn().
+Rename column using withColumnRenamed().
+Rename multiple columns.
+Convert integer column to string.
+Create age category column.
+Create full_name column by concatenating columns.
+Build transformed employee DataFrame.
+
+
+Session 3: Filtering, Sorting and Aggregation (Topics 9-12)
+Practice Questions
+Filter employees with salary > 50000.
+Filter employees from IT department.
+Filter records using multiple conditions.
+Use where() instead of filter().
+Remove duplicate rows using distinct().
+Remove duplicate employees using dropDuplicates().
+Remove duplicates using selected columns.
+Sort salary ascending.
+Sort salary descending.
+Sort by department and salary.
+Use orderBy() with multiple columns.
+Find total employees by department.
+Calculate average salary by department.
+Calculate maximum salary by department.
+Calculate minimum salary by department.
+Calculate total salary by department.
+Apply multiple aggregations together.
+Generate location-wise machine count.
+Generate temperature summary report.
+Build department KPI report using groupBy()..
+
+
+Session 4: Joins, Union and UDF (Topics 13-16)
+Practice Questions
+Perform Inner Join between Employee and Department.
+Perform Left Join.
+Perform Right Join.
+Perform Full Join.
+Perform Cross Join.
+Join machine master and sensor data.
+Join DataFrames using multiple conditions.
+Merge two DataFrames using union().
+Merge DataFrames using unionAll().
+Compare union() and unionAll().
+Merge DataFrames with column order mismatch.
+Use unionByName().
+Use unionByName(allowMissingColumns=True).
+Create UDF to convert names to uppercase.
+Create UDF to calculate employee bonus.
+Create UDF to categorize salary bands.
+Apply UDF using withColumn().
+Apply UDF on sensor temperature.
+Create custom status column using UDF.
+Build employee enrichment pipeline using UDF.
+
+
+Session 5: Functions, RDD Operations and Null Handling (Topics 17-20)
+Practice Questions
+Apply upper() function using withColumn().
+Apply lower() function using select().
+Apply SQL expression using expr().
+Create new salary column using built-in functions.
+Use map() to square numbers.
+Use map() to convert names to uppercase.
+Use flatMap() to split sentences into words.
+Use flatMap() on comma-separated values.
+Count words using map + reduce.
+Print records using foreach().
+Log employee records using foreach().
+Replace null salary using fillna(0).
+Replace null names using fillna("Unknown").
+Replace multiple column nulls.
+Apply fillna on selected columns.
+Create ETL cleansing pipeline.
+Standardize city names.
+Replace invalid temperature values.
+Create data quality report.
+Build clean employee DataFrame.
+
+
+Session 6: Partitioning, Window Functions, Date & JSON (Topics 21-24)
+Practice Questions
+Write DataFrame partitioned by department.
+Write DataFrame partitioned by year.
+Analyze generated partition folders.
+Find total partitions in DataFrame.
+Generate row_number() using Window.
+Generate rank().
+Generate dense_rank().
+Find highest salary per department.
+Find second highest salary.
+Use lag() to compare previous salary.
+Use lead() to compare next salary.
+Extract year from date column.
+Extract month from date column.
+Find week number using weekofyear().
+Convert string to date using to_date().
+Convert string to timestamp using to_timestamp().
+Calculate datediff between two dates.
+Parse JSON using from_json().
+Extract JSON fields using get_json_object().
+Build IoT JSON ETL Pipeline (JSON → DataFrame → Transform → Report).
